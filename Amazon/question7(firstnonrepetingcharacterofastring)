@@ -1,0 +1,54 @@
+// { Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+class Solution {
+	public:
+		string FirstNonRepeating(string s)
+		{
+		    string final="";
+		    int n=s.size();
+		    vector<int>freq(26,0);
+		    string temp="";
+		    for(int i=0;i<n;i++)
+		    {
+		        if(freq[s[i]-'a']==0)
+		        temp+=s[i];
+		        freq[s[i]-'a']++;
+		        int f=-1;
+		        for(int j=0;j<(int)(temp.size());j++)
+		        {
+		            if(freq[temp[j]-'a']==1)
+		            {
+		                f=(int)(temp[j]-'a');
+		                break;
+		            }
+		        }
+		        if(f==-1)
+		        final.push_back('#');
+		        else
+		        {
+		        final.push_back(f+'a');
+		        }
+		        
+		    }
+		    return final;
+		    
+		}
+
+};
+
+// { Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		string A;
+		cin >> A;
+		Solution obj;
+		string ans = obj.FirstNonRepeating(A);
+		cout << ans << "\n";
+	}
+	return 0;
+}  // } Driver Code Endsg
